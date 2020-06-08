@@ -7,9 +7,6 @@ configuration: Release
 build_script:
 - cmd: dotnet build -c Release src/Hangfire.Mongo/Hangfire.Mongo.csproj
 
-test_script:
-- cmd: dotnet test src/Hangfire.Mongo.Tests/Hangfire.Mongo.Tests.csproj
-
 artifacts:
 - path: src/Hangfire.Mongo/bin/Release/Hangfire.Mongo.*.nupkg
 
