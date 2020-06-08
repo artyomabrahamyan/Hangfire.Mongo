@@ -8,12 +8,12 @@ build_script:
 - cmd: dotnet build -c Release src/Hangfire.Mongo/Hangfire.Mongo.csproj
 
 artifacts:
-- path: src/Hangfire.Mongo/bin/Release/Hangfire.Mongo.*.nupkg
+- path: src/Hangfire.Mongo/bin/Release/Hangfire.Mongo.Fork.*.nupkg
 
 deploy:
   provider: NuGet
   api_key: 
-    secure: I0lioB7nE3n3a6zwMTJoCTO0pgEt/LjTBY3kdIlZRmc=
+    secure: ogNTcNrwR0qL0yxk8jbTGq0wB1hSBrXEmiRknn3NKf4vCWHaBZPNQjbdy5fYJlLd
   skip_symbols: false
   artifact: /.*\.nupkg/
   
