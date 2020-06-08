@@ -39,7 +39,7 @@ namespace Hangfire.Mongo
         /// <param name="cancellationToken"></param>
         public virtual void Execute(CancellationToken cancellationToken)
         {
-            var options = new FindOptions<NotificationDto> {CursorType = CursorType.TailableAwait};
+            var options = new FindOptions<NotificationDto> {CursorType = CursorType.NonTailable};
 
             var lastId = ObjectId.GenerateNewId(new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             var filter = new BsonDocument("_id", new BsonDocument("$gt", lastId));

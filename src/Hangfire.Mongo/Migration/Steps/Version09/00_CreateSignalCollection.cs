@@ -15,15 +15,8 @@ namespace Hangfire.Mongo.Migration.Steps.Version09
         {
             var name = $@"{storageOptions.Prefix}.signal";
 
-            database.DropCollection(name);
-
-            var createOptions = new CreateCollectionOptions
-            {
-                Capped = true,
-                MaxSize = 1000000,
-                MaxDocuments = 1000
-            };
-            database.CreateCollection(name, createOptions);
+            database.DropCollection(name);            
+            database.CreateCollection(name);
 
             return true;
         }
