@@ -42,22 +42,22 @@ namespace Hangfire.Mongo.Tests
             _cts.Dispose();
         }
         
-        [Fact]
-        public void Execute_CollectionNotCapped_Stops()
-        {
-            // ARRANGE
-            var signal = new SemaphoreSlim(0,1);
-            _jobQueueSemaphoreMock.Setup(m => m.Release("test"))
-                .Callback(() => signal.Release());
+        //[Fact]
+        //public void Execute_CollectionNotCapped_Stops()
+        //{
+        //    // ARRANGE
+        //    var signal = new SemaphoreSlim(0,1);
+        //    _jobQueueSemaphoreMock.Setup(m => m.Release("test"))
+        //        .Callback(() => signal.Release());
             
-            // ACT
-            _dbContext.Notifications.InsertOne(NotificationDto.JobEnqueued("test"));
-            var signalled = signal.Wait(1000);
+        //    // ACT
+        //    _dbContext.Notifications.InsertOne(NotificationDto.JobEnqueued("test"));
+        //    var signalled = signal.Wait(1000);
             
-            // ASSERT
-            Assert.False(signalled);
-            _jobQueueSemaphoreMock.Verify(m => m.Release("test"), Times.Never);
-            _distributedLockMutexMock.Verify(m => m.Release(It.IsAny<string>()), Times.Never);
-        }
+        //    // ASSERT
+        //    Assert.False(signalled);
+        //    _jobQueueSemaphoreMock.Verify(m => m.Release("test"), Times.Never);
+        //    _distributedLockMutexMock.Verify(m => m.Release(It.IsAny<string>()), Times.Never);
+        //}
     }
 }
